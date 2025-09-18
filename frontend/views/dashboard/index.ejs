@@ -1,3 +1,206 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Aarogya Shield</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="dashboard-container">
+         Navigation Bar -->
+        <!-- <div class="nav-bar">
+            <div class="app-brand">
+                <i class="fas fa-shield-alt"></i>
+                <span>Aarogya Shield</span>
+            </div>
+            
+            <div class="nav-items">
+                <a href="/dashboard" class="nav-item active">
+                    <i class="fas fa-home"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="/nutrition" class="nav-item">
+                    <i class="fas fa-utensils"></i>
+                    <span>Nutrition</span>
+                </a>
+                <a href="/health" class="nav-item">
+                    <i class="fas fa-heartbeat"></i>
+                    <span>Health</span>
+                </a>
+                <a href="/routine" class="nav-item">
+                    <i class="fas fa-calendar-check"></i>
+                    <span>Routine</span>
+                </a>
+                <a href="/tips" class="nav-item">
+                    <i class="fas fa-lightbulb"></i>
+                    <span>Tips</span>
+                </a>
+                <a href="/profile" class="nav-item">
+                    <i class="fas fa-user-circle"></i>
+                    <span>Profile</span>
+                </a>
+            </div>
+        </div> -->
+        
+        <!-- Header -->
+        <!-- <div class="dashboard-header">
+            <div class="user-info">
+                <h1>Welcome, Shubham!</h1>
+                <p>Let's take care of you and your baby</p>
+            </div>
+            <div class="week-info">Week 24</div>
+            <a href="/logout" class="logout-btn">Logout</a>
+        </div> -->
+        
+        <!-- Pregnancy Progress -->
+        <!-- <div class="progress-section">
+            <div class="card">
+                <h3>Pregnancy Progress</h3>
+                <div class="baby-size">
+                    <div class="baby-size-icon">
+                        <i class="fas fa-baby"></i>
+                    </div>
+                    <div class="baby-size-info">
+                        <h4>Your Baby This Week</h4>
+                        <p><strong>Size of Cantaloupe</strong> - 1.3 lbs - 12 inches</p>
+                    </div>
+                </div>
+                <div class="due-date">
+                    <h4>Days Until Due Date</h4>
+                    <div class="due-date-content">
+                        <div class="due-date-number">0</div>
+                        <div class="due-date-text">June 15, 2025</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="section-header">
+                    <h3>Quick Actions</h3>
+                    <div class="week-badge">Week 24</div>
+                </div>
+                <div class="action-buttons">
+                    <div class="action-btn">
+                        <i class="fas fa-notes-medical"></i>
+                        <span>Log Symptoms</span>
+                    </div>
+                    <div class="action-btn">
+                        <i class="fas fa-calendar-check"></i>
+                        <span>Schedule Checkup</span>
+                    </div>
+                    <div class="action-btn">
+                        <i class="fas fa-pills"></i>
+                        <span>Medication Reminder</span>
+                    </div>
+                    <div class="action-btn">
+                        <i class="fas fa-lightbulb"></i>
+                        <span>Daily Tips</span>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+
+        
+        <!-- Today's Goals & Tip -->
+        <!-- <div class="goals-section">
+            <div class="card">
+                <h3>Today's Goals</h3>
+                <div class="goal-item">
+                    <h4>Water Intake</h4>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 75%;"></div>
+                    </div>
+                    <div class="progress-text">
+                        <span>6/8 Glasses</span>
+                        <span>75% Complete</span>
+                    </div>
+                </div>
+                <div class="goal-item">
+                    <h4>Steps</h4>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 75%;"></div>
+                    </div>
+                    <div class="progress-text">
+                        <span>4500/6000 Steps</span>
+                        <span>75% Complete</span>
+                    </div>
+                </div>
+                <div class="goal-item">
+                    <h4>Sleep</h4>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 94%;"></div>
+                    </div>
+                    <div class="progress-text">
+                        <span>7.5/8 Hours</span>
+                        <span>94% Complete</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tip-card">
+                <h3>Today's Tip</h3>
+                <p>Stay hydrated by drinking at least 8-10 glasses of water daily. Proper hydration helps maintain amniotic fluid levels and prevents common pregnancy discomforts.</p>
+            </div>
+        </div>
+    </div> -->
+
+    <!-- <script>
+        // Simple interactive functionality
+        document.querySelectorAll('.action-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const action = this.querySelector('span').textContent;
+                alert(`You selected: ${action}`);
+            });
+        });
+    </script> -->
+
+    <!-- <script>
+        // Function to get the username from URL parameters (simulated login)
+        function getUsername() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('user') || 'Shubham';
+        }
+        
+        // Function to update the username in the dashboard
+        function updateDashboardUsername() {
+            const username = getUsername();
+            document.querySelector('.user-info h1').textContent = `Welcome, ${username}!`;
+        }
+        
+        // Update username on page load
+        document.addEventListener('DOMContentLoaded', updateDashboardUsername);
+        
+        // Simulate login functionality for demonstration
+        function simulateLogin() {
+            const name = prompt("Please enter your name", "Shubham");
+            if (name != null && name !== "") {
+                // Update the dashboard with the entered name
+                document.querySelector('.user-info h1').textContent = `Welcome, ${name}!`;
+                
+                // Update URL without reloading the page
+                const newUrl = window.location.protocol + "//" + window.location.host + 
+                               window.location.pathname + '?user=' + encodeURIComponent(name);
+                window.history.pushState({path: newUrl}, '', newUrl);
+            }
+        }
+        
+        // Add click event to user profile to simulate login
+        document.querySelector('.user-info').addEventListener('click', simulateLogin);
+
+        // Original action button code (optional, agar chahiye toh rakho)
+        document.querySelectorAll('.action-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const action = this.querySelector('span').textContent;
+                alert(`You selected: ${action}`);
+            });
+        });
+    </script> -->
+<!-- </body>
+</html>  -->
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,376 +208,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - Aarogya Shield</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', 'Segoe UI', sans-serif;
-        }
-        
-        body {
-            background: #f0f7ff;
-            color: #2b2d42;
-            line-height: 1.6;
-        }
-        
-        .dashboard-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        
-        /* Navigation Bar */
-        .nav-bar {
-            background: white;
-            border-radius: 15px;
-            padding: 15px 25px;
-            margin-bottom: 25px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
-        
-        .app-brand {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-weight: 700;
-            font-size: 20px;
-            color: #0c7cba;
-        }
-        
-        .app-brand i {
-            font-size: 24px;
-        }
-        
-        .nav-items {
-            display: flex;
-            gap: 30px;
-        }
-        
-        .nav-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-decoration: none;
-            color: #6c757d;
-            font-size: 14px;
-            transition: all 0.3s ease;
-        }
-        
-        .nav-item i {
-            font-size: 20px;
-            margin-bottom: 5px;
-        }
-        
-        .nav-item.active {
-            color: #0c7cba;
-        }
-        
-        .nav-item:hover {
-            color: #0c7cba;
-            transform: translateY(-2px);
-        }
-
-        /* Header Styles */
-        .dashboard-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: linear-gradient(120deg, #0c7cba 0%, #3bb6b5 100%);
-            padding: 20px 30px;
-            border-radius: 15px;
-            color: white;
-            margin-bottom: 25px;
-            box-shadow: 0 5px 15px rgba(12, 124, 186, 0.2);
-        }
-        
-        .user-info h1 {
-            font-size: 28px;
-            margin-bottom: 5px;
-        }
-        
-        .user-info p {
-            font-size: 16px;
-            opacity: 0.9;
-        }
-        
-        .week-info {
-            background: rgba(255, 255, 255, 0.2);
-            padding: 10px 20px;
-            border-radius: 50px;
-            font-weight: 600;
-        }
-        
-        .logout-btn {
-            background: rgba(255, 255, 255, 0.2);
-            border: none;
-            padding: 10px 20px;
-            border-radius: 50px;
-            color: white;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-        }
-        
-        .logout-btn:hover {
-            background: rgba(255, 255, 255, 0.3);
-        }
-        
-        /* Progress Section */
-        .progress-section {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 25px;
-            margin-bottom: 25px;
-        }
-        
-        .card {
-            background: white;
-            padding: 25px;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
-        
-        .card h3 {
-            color: #0c7cba;
-            margin-bottom: 20px;
-            font-size: 20px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #f0f7ff;
-        }
-        
-        .baby-size {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-        
-        .baby-size-icon {
-            background: #e8f4fc;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 15px;
-            font-size: 24px;
-            color: #0c7cba;
-        }
-        
-        .baby-size-info h4 {
-            font-size: 18px;
-            margin-bottom: 5px;
-        }
-        
-        .baby-size-info p {
-            color: #6c757d;
-            font-size: 14px;
-        }
-        
-        .due-date {
-            background: #f8f9fa;
-            padding: 15px;
-            border-radius: 10px;
-            margin-top: 20px;
-        }
-        
-        .due-date h4 {
-            color: #0c7cba;
-            margin-bottom: 10px;
-        }
-        
-        .due-date-content {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-        
-        .due-date-number {
-            font-size: 32px;
-            font-weight: 700;
-            color: #0c7cba;
-        }
-        
-        .due-date-text {
-            font-size: 16px;
-            font-weight: 600;
-            color: #2b2d42;
-        }
-        
-        /* Quick Actions */
-        .section-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-        
-        .section-header h3 {
-            color: #0c7cba;
-            font-size: 20px;
-        }
-        
-        .week-badge {
-            background: #e8f4fc;
-            color: #0c7cba;
-            padding: 5px 15px;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 14px;
-        }
-        
-        .action-buttons {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-        }
-        
-        .action-btn {
-            background: #f8f9fa;
-            border: 2px solid #e9ecef;
-            padding: 15px;
-            border-radius: 10px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .action-btn:hover {
-            background: #0c7cba;
-            color: white;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(12, 124, 186, 0.2);
-        }
-        
-        .action-btn i {
-            font-size: 24px;
-            margin-bottom: 10px;
-            display: block;
-            color: #0c7cba;
-        }
-        
-        .action-btn:hover i {
-            color: white;
-        }
-        
-        /* Goals Section */
-        .goals-section {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 25px;
-            margin-bottom: 25px;
-        }
-        
-        .goal-item {
-            margin-bottom: 20px;
-        }
-        
-        .goal-item h4 {
-            font-size: 16px;
-            margin-bottom: 10px;
-            color: #2b2d42;
-        }
-        
-        .progress-bar {
-            height: 10px;
-            background: #f0f7ff;
-            border-radius: 5px;
-            overflow: hidden;
-            margin-bottom: 5px;
-        }
-        
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, #0c7cba, #3bb6b5);
-            border-radius: 5px;
-        }
-        
-        .progress-text {
-            display: flex;
-            justify-content: space-between;
-            font-size: 14px;
-            color: #6c757d;
-        }
-        
-        /* Tip Card */
-        .tip-card {
-            background: linear-gradient(120deg, #0c7cba 0%, #3bb6b5 100%);
-            color: white;
-            padding: 25px;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(12, 124, 186, 0.2);
-        }
-        
-        .tip-card h3 {
-            margin-bottom: 15px;
-            font-size: 20px;
-        }
-        
-        .tip-card p {
-            line-height: 1.6;
-            font-size: 16px;
-        }
-        
-        /* Responsive Design */
-        @media (max-width: 992px) {
-            .progress-section,
-            .goals-section {
-                grid-template-columns: 1fr;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .dashboard-header {
-                flex-direction: column;
-                text-align: center;
-                gap: 15px;
-            }
-            
-            .action-buttons {
-                grid-template-columns: 1fr 1fr;
-            }
-            
-            .nav-bar {
-                flex-direction: column;
-                gap: 15px;
-            }
-            
-            .nav-items {
-                gap: 15px;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .action-buttons {
-                grid-template-columns: 1fr;
-            }
-            
-            .dashboard-container {
-                padding: 15px;
-            }
-            
-            .nav-items {
-                gap: 10px;
-            }
-            
-            .nav-item {
-                font-size: 12px;
-            }
-            
-            .nav-item i {
-                font-size: 18px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
     <div class="dashboard-container">
@@ -439,7 +273,7 @@
                 <div class="due-date">
                     <h4>Days Until Due Date</h4>
                     <div class="due-date-content">
-                        <div class="due-date-number">0</div>
+                        <div class="due-date-number">112</div>
                         <div class="due-date-text">June 15, 2025</div>
                     </div>
                 </div>
@@ -451,25 +285,26 @@
                     <div class="week-badge">Week 24</div>
                 </div>
                 <div class="action-buttons">
-                    <div class="action-btn">
+                    <div class="action-btn" onclick="openModal('symptomsModal')">
                         <i class="fas fa-notes-medical"></i>
                         <span>Log Symptoms</span>
                     </div>
-                    <div class="action-btn">
+                    <div class="action-btn" onclick="openModal('checkupModal')">
                         <i class="fas fa-calendar-check"></i>
                         <span>Schedule Checkup</span>
                     </div>
-                    <div class="action-btn">
+                    <div class="action-btn" onclick="openModal('medicationModal')">
                         <i class="fas fa-pills"></i>
                         <span>Medication Reminder</span>
                     </div>
-                    <div class="action-btn">
+                    <div class="action-btn" onclick="showDailyTip()">
                         <i class="fas fa-lightbulb"></i>
                         <span>Daily Tips</span>
                     </div>
                 </div>
             </div>
         </div>
+
         
         <!-- Today's Goals & Tip -->
         <div class="goals-section">
@@ -514,14 +349,338 @@
         </div>
     </div>
 
+    <!-- Modals for Quick Actions -->
+    <!-- Symptoms Modal -->
+    <div id="symptomsModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('symptomsModal')">&times;</span>
+            <h2 class="modal-title">Log Symptoms</h2>
+            <div class="form-group">
+                <label for="symptom">Select Symptom</label>
+                <select id="symptom">
+                    <option value="">Select a symptom</option>
+                    <option value="nausea">Nausea</option>
+                    <option value="headache">Headache</option>
+                    <option value="backache">Backache</option>
+                    <option value="fatigue">Fatigue</option>
+                    <option value="cramps">Cramps</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="symptomSeverity">Severity (1-10)</label>
+                <input type="number" id="symptomSeverity" min="1" max="10">
+            </div>
+            <div class="form-group">
+                <label for="symptomNotes">Additional Notes</label>
+                <textarea id="symptomNotes" placeholder="Describe your symptoms..."></textarea>
+            </div>
+            <button class="submit-btn" onclick="logSymptom()">Save Symptom</button>
+        </div>
+    </div>
+
+    <!-- Checkup Modal -->
+    <div id="checkupModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('checkupModal')">&times;</span>
+            <h2 class="modal-title">Schedule Checkup</h2>
+            <div class="form-group">
+                <label for="checkupType">Checkup Type</label>
+                <select id="checkupType">
+                    <option value="">Select checkup type</option>
+                    <option value="routine">Routine Prenatal Visit</option>
+                    <option value="ultrasound">Ultrasound</option>
+                    <option value="bloodtest">Blood Test</option>
+                    <option value="specialist">Specialist Consultation</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="checkupDate">Date & Time</label>
+                <input type="datetime-local" id="checkupDate">
+            </div>
+            <div class="form-group">
+                <label for="doctor">Doctor</label>
+                <input type="text" id="doctor" placeholder="Doctor's name">
+            </div>
+            <button class="submit-btn" onclick="scheduleCheckup()">Schedule Appointment</button>
+        </div>
+    </div>
+
+    <!-- Medication Modal -->
+    <div id="medicationModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('medicationModal')">&times;</span>
+            <h2 class="modal-title">Medication Reminder</h2>
+            <div class="form-group">
+                <label for="medicationName">Medication Name</label>
+                <input type="text" id="medicationName" placeholder="Enter medication name">
+            </div>
+            <div class="form-group">
+                <label for="medicationDosage">Dosage</label>
+                <input type="text" id="medicationDosage" placeholder="e.g., 1 tablet">
+            </div>
+            <div class="form-group">
+                <label for="medicationFrequency">Frequency</label>
+                <select id="medicationFrequency">
+                    <option value="once">Once daily</option>
+                    <option value="twice">Twice daily</option>
+                    <option value="thrice">Three times daily</option>
+                    <option value="custom">Custom</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="medicationTime">Reminder Time</label>
+                <input type="time" id="medicationTime">
+            </div>
+            <button class="submit-btn" onclick="setMedicationReminder()">Set Reminder</button>
+        </div>
+    </div>
+
+    <!-- Chatbot Container - Body ke end mein add karo, script se pehle -->
+<div class="chatbot-container">
+    <button class="chatbot-button" onclick="toggleChatbot()">
+        <i class="fas fa-comment-dots"></i>
+    </button>
+    <div class="chatbot-window" id="chatbotWindow">
+        <div class="chatbot-header">
+            <h3><i class="fas fa-robot"></i> Pregnancy Assistant</h3>
+            <button class="chatbot-close" onclick="toggleChatbot()">&times;</button>
+        </div>
+        <div class="chat-messages" id="chatMessages">
+            <div class="message bot-message">
+                Hi there! I'm your pregnancy assistant. How can I help you today?
+            </div>
+        </div>
+        <div class="quick-questions">
+            <button class="quick-question" onclick="askQuestion('What foods should I avoid during pregnancy?')">Foods to avoid</button>
+            <button class="quick-question" onclick="askQuestion('What are safe exercises during pregnancy?')">Safe exercises</button>
+            <button class="quick-question" onclick="askQuestion('When should I call my doctor?')">When to call doctor</button>
+            <button class="quick-question" onclick="askQuestion('What are common symptoms in second trimester?')">2nd trimester symptoms</button>
+        </div>
+        <div class="chat-input">
+            <input type="text" id="userInput" placeholder="Ask something about pregnancy..." onkeypress="handleKeyPress(event)">
+            <button onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+</div>
+
     <script>
-        // Simple interactive functionality
-        document.querySelectorAll('.action-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                const action = this.querySelector('span').textContent;
-                alert(`You selected: ${action}`);
-            });
-        });
+        // Modal functions
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'flex';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = 'none';
+            }
+        }
+
+        // Quick Actions functionality
+        function logSymptom() {
+            const symptom = document.getElementById('symptom').value;
+            const severity = document.getElementById('symptomSeverity').value;
+            const notes = document.getElementById('symptomNotes').value;
+            
+            if (!symptom || !severity) {
+                alert('Please select a symptom and enter severity level.');
+                return;
+            }
+            
+            alert(`Symptom logged successfully!\nSymptom: ${symptom}\nSeverity: ${severity}\nNotes: ${notes}`);
+            closeModal('symptomsModal');
+            
+            // Reset form
+            document.getElementById('symptom').value = '';
+            document.getElementById('symptomSeverity').value = '';
+            document.getElementById('symptomNotes').value = '';
+        }
+
+        function scheduleCheckup() {
+            const type = document.getElementById('checkupType').value;
+            const date = document.getElementById('checkupDate').value;
+            const doctor = document.getElementById('doctor').value;
+            
+            if (!type || !date) {
+                alert('Please select checkup type and date.');
+                return;
+            }
+            
+            alert(`Checkup scheduled successfully!\nType: ${type}\nDate: ${new Date(date).toLocaleString()}\nDoctor: ${doctor || 'Not specified'}`);
+            closeModal('checkupModal');
+            
+            // Reset form
+            document.getElementById('checkupType').value = '';
+            document.getElementById('checkupDate').value = '';
+            document.getElementById('doctor').value = '';
+        }
+
+        function setMedicationReminder() {
+            const name = document.getElementById('medicationName').value;
+            const dosage = document.getElementById('medicationDosage').value;
+            const frequency = document.getElementById('medicationFrequency').value;
+            const time = document.getElementById('medicationTime').value;
+            
+            if (!name || !dosage || !time) {
+                alert('Please fill all required fields.');
+                return;
+            }
+            
+            alert(`Medication reminder set successfully!\nMedication: ${name}\nDosage: ${dosage}\nFrequency: ${frequency}\nTime: ${time}`);
+            closeModal('medicationModal');
+            
+            // Reset form
+            document.getElementById('medicationName').value = '';
+            document.getElementById('medicationDosage').value = '';
+            document.getElementById('medicationFrequency').value = 'once';
+            document.getElementById('medicationTime').value = '';
+        }
+
+        function showDailyTip() {
+            const tips = [
+                "Stay hydrated by drinking at least 8-10 glasses of water daily.",
+                "Take short walks to improve circulation and reduce swelling.",
+                "Practice prenatal yoga to help with flexibility and relaxation.",
+                "Eat small, frequent meals to help with nausea and maintain energy levels.",
+                "Get plenty of rest and listen to your body when you need to slow down."
+            ];
+            
+            const randomTip = tips[Math.floor(Math.random() * tips.length)];
+            alert(`💡 Daily Tip:\n\n${randomTip}`);
+        }
+
+        // Dynamic username functionality
+        function getUsername() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('user') || 'Shubham';
+        }
+        
+        function updateDashboardUsername() {
+            const username = getUsername();
+            document.querySelector('.user-info h1').textContent = `Welcome, ${username}!`;
+        }
+        
+        document.addEventListener('DOMContentLoaded', updateDashboardUsername);
+
+        // Chatbot functionality - Existing script ke end mein add karo
+function toggleChatbot() {
+    const chatbotWindow = document.getElementById('chatbotWindow');
+    if (chatbotWindow.style.display === 'flex') {
+        chatbotWindow.style.display = 'none';
+    } else {
+        chatbotWindow.style.display = 'flex';
+        document.getElementById('userInput').focus();
+    }
+}
+
+function handleKeyPress(event) {
+    if (event.key === 'Enter') {
+        sendMessage();
+    }
+}
+
+function sendMessage() {
+    const userInput = document.getElementById('userInput');
+    const message = userInput.value.trim();
+    
+    if (message !== '') {
+        addMessage(message, 'user');
+        userInput.value = '';
+        
+        // Show typing indicator
+        showTypingIndicator();
+        
+        // Simulate AI response after a short delay
+        setTimeout(() => {
+            removeTypingIndicator();
+            generateResponse(message);
+        }, 1500);
+    }
+}
+
+function askQuestion(question) {
+    addMessage(question, 'user');
+    
+    // Show typing indicator
+    showTypingIndicator();
+    
+    // Simulate AI response after a short delay
+    setTimeout(() => {
+        removeTypingIndicator();
+        generateResponse(question);
+    }, 1500);
+}
+
+function addMessage(text, sender) {
+    const chatMessages = document.getElementById('chatMessages');
+    const messageDiv = document.createElement('div');
+    messageDiv.classList.add('message');
+    messageDiv.classList.add(sender === 'user' ? 'user-message' : 'bot-message');
+    messageDiv.textContent = text;
+    
+    chatMessages.appendChild(messageDiv);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+function showTypingIndicator() {
+    const chatMessages = document.getElementById('chatMessages');
+    const typingDiv = document.createElement('div');
+    typingDiv.classList.add('typing-indicator');
+    typingDiv.id = 'typingIndicator';
+    typingDiv.innerHTML = `
+        <span>AI is typing</span>
+        <div class="typing-dot"></div>
+        <div class="typing-dot"></div>
+        <div class="typing-dot"></div>
+    `;
+    
+    chatMessages.appendChild(typingDiv);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+function removeTypingIndicator() {
+    const typingIndicator = document.getElementById('typingIndicator');
+    if (typingIndicator) {
+        typingIndicator.remove();
+    }
+}
+
+function generateResponse(userMessage) {
+    const lowerMessage = userMessage.toLowerCase();
+    let response = '';
+    
+    // Predefined responses based on keywords
+    if (lowerMessage.includes('food') || lowerMessage.includes('eat') || lowerMessage.includes('diet')) {
+        response = "During pregnancy, focus on a balanced diet with plenty of fruits, vegetables, whole grains, and lean proteins. Avoid raw seafood, unpasteurized dairy, deli meats, and high-mercury fish. Stay hydrated and consider prenatal vitamins. Always consult your doctor about specific dietary needs.";
+    } 
+    else if (lowerMessage.includes('exercise') || lowerMessage.includes('workout') || lowerMessage.includes('activity')) {
+        response = "Most exercises are safe during pregnancy including walking, swimming, prenatal yoga, and stationary cycling. Avoid activities with high fall risk or contact sports. Listen to your body and don't overexert. Aim for 30 minutes of moderate activity most days, but consult your doctor first.";
+    }
+    else if (lowerMessage.includes('symptom') || lowerMessage.includes('feel') || lowerMessage.includes('experience')) {
+        response = "Common pregnancy symptoms include nausea, fatigue, frequent urination, breast tenderness, and mood swings. As pregnancy progresses, you might experience back pain, heartburn, and swelling. Always report severe symptoms like heavy bleeding, severe pain, or decreased fetal movement to your doctor immediately.";
+    }
+    else if (lowerMessage.includes('doctor') || lowerMessage.includes('call') || lowerMessage.includes('emergency')) {
+        response = "Contact your doctor immediately if you experience: severe abdominal pain, vaginal bleeding, sudden swelling, severe headaches, blurred vision, fever over 100.4°F, painful urination, or decreased fetal movement. It's always better to be cautious during pregnancy.";
+    }
+    else if (lowerMessage.includes('trimester') || lowerMessage.includes('week') || lowerMessage.includes('month')) {
+        response = "Pregnancy is divided into three trimesters: First (weeks 1-13) with early symptoms and development, Second (weeks 14-27) often called the 'honeymoon period' with more energy, and Third (weeks 28-40) with preparation for delivery. Each stage has unique developments and symptoms.";
+    }
+    else if (lowerMessage.includes('sleep') || lowerMessage.includes('rest') || lowerMessage.includes('tired')) {
+        response = "Sleep can be challenging during pregnancy. Try sleeping on your left side to improve circulation, use pillows for support, establish a bedtime routine, and avoid caffeine late in the day. If you're experiencing insomnia, discuss it with your doctor at your next appointment.";
+    }
+    else if (lowerMessage.includes('weight') || lowerMessage.includes('gain') || lowerMessage.includes('loss')) {
+        response = "Weight gain during pregnancy is normal and necessary. The recommended amount depends on your pre-pregnancy BMI: underweight (28-40 lbs), normal weight (25-35 lbs), overweight (15-25 lbs), obese (11-20 lbs). Your doctor can provide personalized guidance based on your health.";
+    }
+    else {
+        response = "I'm here to help with pregnancy-related questions. You can ask me about nutrition, exercise, symptoms, or any concerns you might have. Remember, I provide general information but always consult your healthcare provider for personal medical advice.";
+    }
+    
+    addMessage(response, 'bot');
+}
     </script>
 </body>
 </html>

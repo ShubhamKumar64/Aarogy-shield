@@ -1,33 +1,33 @@
-<!-- <div class="nav-bar"> -->
-    <!-- Existing brand logo -->
-    <!-- <div class="app-brand">
+<!-- <div class="nav-bar"> 
+    Existing brand logo
+    <div class="app-brand">
         <i class="fas fa-shield-alt"></i>
-        <span><%= t('appName') %></span>  <!-- ✅ CHANGED -->
-    <!-- </div> --> -->
+        <span><%= t('appName') %></span>  ✅ CHANGED
+    </div>
     
-    <!-- Existing menu items -->
-    <!-- <div class="nav-items">
+     Existing menu items -->
+     <!-- <div class="nav-items"> 
         <a href="/dashboard" class="nav-item <%= currentPage === 'dashboard' ? 'active' : '' %>">
-            <i class="fas fa-home"></i>
-            <span><%= t('dashboard') %></span>  <!-- ✅ CHANGED -->
-        <!-- </a>
+            <i class="fas fa-home"></i> -->
+            <!-- <span><%= t('dashboard') %></span>  ✅ CHANGED
+        </a>
         <a href="/nutrition" class="nav-item <%= currentPage === 'nutrition' ? 'active' : '' %>">
             <i class="fas fa-utensils"></i>
             <span><%= t('nutrition') %></span>  <!-- ✅ CHANGED -->
-        <!-- </a>  -->
+        <!-- </a>    -->
         <!-- ... other menu items with t() -->
     <!-- </div> -->
 
-    <!-- ✅ ADD LANGUAGE SWITCHER -->
+    <!-- ✅ ADD LANGUAGE SWITCHER --> -->
     <!-- <div class="language-switcher">
         <select onchange="changeLanguage(this.value)" class="language-select">
             <option value="en" <%= currentLanguage === 'en' ? 'selected' : '' %>>English</option>
             <option value="hi" <%= currentLanguage === 'hi' ? 'selected' : '' %>>Hindi</option>
         </select>
     </div>
-</div>
+</div> -->
 
-<style>
+<!-- <style>
 .language-switcher {
     margin-left: 20px;
 }
@@ -41,18 +41,17 @@
     cursor: pointer;
     font-weight: 500;
 }
-</style> -->
+</style>  -->
 
-<!-- <script>
+ <!-- <script>
 function changeLanguage(lang) {
     const currentUrl = new URL(window.location.href);
     currentUrl.searchParams.set('lang', lang);
     window.location.href = currentUrl.toString();
 }
-</script> -->
+</script>
 
-
-<nav style="background: white; padding: 15px; display: flex; justify-content: space-between;">
+ <nav style="background: white; padding: 15px; display: flex; justify-content: space-between;">
     <div>
         <span>Logo</span>
     </div>
@@ -64,4 +63,4 @@ function changeLanguage(lang) {
 </nav>
 
 <h1>TEST: <%= t('welcome') %></h1>
-<p>Current Language: <%= currentLanguage %></p>
+<p>Current Language: <%= currentLanguage %></p>  -->
