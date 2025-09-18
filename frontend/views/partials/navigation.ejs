@@ -1,32 +1,45 @@
 <nav class="nav-bar">
     <div class="app-brand">
         <i class="fas fa-shield-alt"></i>
-        <span>Aarogya Shield</span>
+        <span>Aarogya Shield</span>  <!-- Pehle jaise -->
     </div>
+    
     <div class="nav-items">
-        <a href="/dashboard" class="nav-item <%= typeof currentPage !== 'undefined' && currentPage === 'dashboard' ? 'active' : '' %>">
+        <!-- Existing menu items -->
+        <a href="/dashboard" class="nav-item">
             <i class="fas fa-home"></i>
-            <span>Dashboard</span>
+            <span>Dashboard</span>  <!-- Pehle jaise -->
         </a>
-        <a href="/nutrition" class="nav-item <%= typeof currentPage !== 'undefined' && currentPage === 'nutrition' ? 'active' : '' %>">
-            <i class="fas fa-utensils"></i>
-            <span>Nutrition</span>
-        </a>
-        <a href="/health" class="nav-item <%= typeof currentPage !== 'undefined' && currentPage === 'health' ? 'active' : '' %>">
-            <i class="fas fa-heartbeat"></i>
-            <span>Health</span>
-        </a>
-        <a href="/routine" class="nav-item <%= typeof currentPage !== 'undefined' && currentPage === 'routine' ? 'active' : '' %>">
-            <i class="fas fa-calendar-check"></i>
-            <span>Routine</span>
-        </a>
-        <a href="/tips" class="nav-item <%= typeof currentPage !== 'undefined' && currentPage === 'tips' ? 'active' : '' %>">
-            <i class="fas fa-lightbulb"></i>
-            <span>Tips </span>
-        </a>
-        <a href="/profile" class="nav-item <%= typeof currentPage !== 'undefined' && currentPage === 'profile' ? 'active' : '' %>">
-            <i class="fas fa-user-circle"></i>
-            <span>Profile</span>
-        </a>
+        <!-- ... other menu items -->
+    </div>
+
+    <!-- ✅ YE NEW CODE ADD KARO - Simple Language Switcher -->
+    <div class="language-switcher">
+        <select onchange="changeLanguage(this.value)" class="language-select">
+            <option value="en">English</option>
+            <option value="hi">Hindi</option>
+        </select>
     </div>
 </nav>
+
+<style>
+.language-switcher {
+    margin-left: 20px;
+}
+
+.language-select {
+    padding: 8px 15px;
+    border: 2px solid #0c7cba;
+    border-radius: 25px;
+    background: white;
+    color: #0c7cba;
+    cursor: pointer;
+}
+</style>
+
+<script>
+function changeLanguage(lang) {
+    // Simple language change
+    window.location.href = window.location.pathname + '?lang=' + lang;
+}
+</script>

@@ -1,0 +1,54 @@
+<div class="language-switcher">
+    <button class="language-btn <%= currentLanguage === 'en' ? 'active' : '' %>" 
+            onclick="changeLanguage('en')">
+        🇺🇸 English
+    </button>
+    <button class="language-btn <%= currentLanguage === 'hi' ? 'active' : '' %>" 
+            onclick="changeLanguage('hi')">
+        🇮🇳 Hindi
+    </button>
+</div>
+
+<style>
+.language-switcher {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    display: flex;
+    gap: 10px;
+    background: white;
+    padding: 10px;
+    border-radius: 50px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.language-btn {
+    padding: 8px 15px;
+    border: 2px solid #0c7cba;
+    background: white;
+    color: #0c7cba;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.language-btn.active {
+    background: #0c7cba;
+    color: white;
+}
+
+.language-btn:hover {
+    transform: translateY(-2px);
+}
+</style>
+
+<script>
+function changeLanguage(lang) {
+    // Redirect to current page with language parameter
+    const url = new URL(window.location.href);
+    url.searchParams.set('lang', lang);
+    window.location.href = url.toString();
+}
+</script>
