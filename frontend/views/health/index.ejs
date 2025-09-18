@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Monitor - SIH Project</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        .dashboard-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Navigation Bar */
+        .nav-bar {
+            background: white;
+            border-radius: 15px;
+            padding: 15px 25px;
+            margin-bottom: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .app-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+            font-size: 20px;
+            color: #0c7cba;
+        }
+        
+        .app-brand i {
+            font-size: 24px;
+        }
+        
+        .nav-items {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: #6c757d;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-item i {
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+        
+        .nav-item.active {
+            color: #0c7cba;
+        }
+        
+        .nav-item:hover {
+            color: #0c7cba;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        
+        header {
+            background: linear-gradient(135deg, #4b6cb7, #182848);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        header h1 i {
+            margin-right: 15px;
+            font-size: 32px;
+        }
+        
+        header p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        
+        .dashboard {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+        
+        @media (max-width: 900px) {
+            .dashboard {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 25px;
+        }
+        
+        .card-title {
+            font-size: 20px;
+            color: #4b6cb7;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f0f0f0;
+            display: flex;
+            align-items: center;
+        }
+        
+        .card-title i {
+            margin-right: 10px;
+        }
+        
+        .vital-signs {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        
+        .vital-card {
+            text-align: center;
+            padding: 15px;
+            border-radius: 10px;
+            background: #f8f9fa;
+            transition: transform 0.3s;
+        }
+        
+        .vital-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .vital-name {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+        
+        .vital-status {
+            font-size: 14px;
+            color: #28a745;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+        
+        .vital-value {
+            font-size: 28px;
+            font-weight: 700;
+            color: #4b6cb7;
+            margin-bottom: 5px;
+        }
+        
+        .vital-unit {
+            font-size: 14px;
+            color: #888;
+        }
+        
+        .divider {
+            height: 1px;
+            background: #e0e0e0;
+            margin: 15px 0;
+        }
+        
+        .symptoms-list {
+            list-style: none;
+        }
+        
+        .symptom-item {
+            padding: 12px 15px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            background: #f8f9fa;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .symptom-item:hover {
+            background: #edf2ff;
+        }
+        
+        .symptom-name {
+            font-weight: 500;
+        }
+        
+        .symptom-time {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: #4b6cb7;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 15px;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background: #3a5999;
+            transform: translateY(-2px);
+        }
+        
+        .btn i {
+            margin-right: 8px;
+        }
+        
+        .appointment-item {
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            background: #f8f9fa;
+        }
+        
+        .appointment-item:hover {
+            background: #edf2ff;
+        }
+        
+        .appointment-type {
+            font-weight: 500;
+            color: #4b6cb7;
+            margin-bottom: 5px;
+        }
+        
+        .appointment-doctor {
+            color: #666;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        
+        .appointment-time {
+            display: flex;
+            align-items: center;
+            color: #28a745;
+            font-weight: 500;
+        }
+        
+        .appointment-time i {
+            margin-right: 8px;
+        }
+        
+        .tips-list {
+            list-style: none;
+            padding-left: 10px;
+        }
+        
+        .tips-list li {
+            margin-bottom: 15px;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .tips-list li:before {
+            content: "•";
+            color: #4b6cb7;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            font-size: 20px;
+        }
+        
+        .health-tips {
+            background: linear-gradient(to right, #edf2ff, #f8f9fa);
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        
+        .modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .modal-title {
+            font-size: 22px;
+            color: #4b6cb7;
+            margin-bottom: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+        
+        .form-group textarea {
+            height: 100px;
+            resize: vertical;
+        }
+        
+        .modal-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .btn-secondary {
+            background: #6c757d;
+        }
+        
+        .btn-secondary:hover {
+            background: #5a6268;
+        }
+        
+        .severity-indicator {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            margin-left: 10px;
+        }
+        
+        .severity-mild {
+            background: #fff3cd;
+            color: #856404;
+        }
+        
+        .severity-moderate {
+            background: #ffeaa7;
+            color: #8a6d0c;
+        }
+        
+        .severity-severe {
+            background: #f8d7da;
+            color: #721c24;
+        }
+    </style>
+</head>
+<body>
+     <div class="dashboard-container">
+        <!-- Navigation Bar -->
+        <div class="nav-bar">
+            <div class="app-brand">
+                <i class="fas fa-shield-alt"></i>
+                <span>Aarogya Shield</span>
+            </div>
+            <div class="nav-items">
+                <a href="/dashboard" class="nav-item ">
+                    <i class="fas fa-home"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="/nutrition" class="nav-item ">
+                    <i class="fas fa-utensils"></i>
+                    <span>Nutrition</span>
+                </a>
+                <a href="/health" class="nav-item active">
+                    <i class="fas fa-heartbeat"></i>
+                    <span>Health</span>
+                </a>
+                <a href="/routine" class="nav-item">
+                    <i class="fas fa-calendar-check"></i>
+                    <span>Routine</span>
+                </a>
+                <a href="/tips" class="nav-item">
+                    <i class="fas fa-lightbulb"></i>
+                    <span>Tips </span>
+                </a>
+                <a href="/profile" class="nav-item">
+                    <i class="fas fa-user-circle"></i>
+                    <span>Profile</span>
+                </a>
+            </div>
+        </div>
+        
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-heartbeat"></i> Health Monitor</h1>
+            <p>Track your vital signs and symptoms for a healthy pregnancy</p>
+        </header>
+        
+        <div class="dashboard">
+            <div class="left-column">
+                <div class="card">
+                    <h2 class="card-title"><i class="fas fa-heart"></i> Vital Signs</h2>
+                    <div class="vital-signs">
+                        <div class="vital-card">
+                            <div class="vital-name">Blood Pressure</div>
+                            <div class="vital-status">Normal</div>
+                            <div class="vital-value">118/76</div>
+                            <div class="vital-unit">mmHg</div>
+                        </div>
+                        
+                        <div class="vital-card">
+                            <div class="vital-name">Heart Rate</div>
+                            <div class="vital-status">Normal</div>
+                            <div class="vital-value">78</div>
+                            <div class="vital-unit">bpm</div>
+                        </div>
+                    </div>
+                    
+                    <div class="divider"></div>
+                    
+                    <div class="vital-signs">
+                        <div class="vital-card">
+                            <div class="vital-name">Weight</div>
+                            <div class="vital-status">On Track</div>
+                            <div class="vital-value">145</div>
+                            <div class="vital-unit">lbs</div>
+                        </div>
+                        
+                        <div class="vital-card">
+                            <div class="vital-name">Temperature</div>
+                            <div class="vital-status">Normal</div>
+                            <div class="vital-value">98.6</div>
+                            <div class="vital-unit">°F</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h2 class="card-title"><i class="fas fa-stethoscope"></i> Recent Symptoms</h2>
+                    <ul class="symptoms-list">
+                        <li class="symptom-item">
+                            <div>
+                                <div class="symptom-name">Morning Sickness <span class="severity-indicator severity-mild">Mild</span></div>
+                                <div class="symptom-time">2024-01-15 at 8:30 AM</div>
+                            </div>
+                            <i class="fas fa-ellipsis-v"></i>
+                        </li>
+                        <li class="symptom-item">
+                            <div>
+                                <div class="symptom-name">Back Pain <span class="severity-indicator severity-moderate">Moderate</span></div>
+                                <div class="symptom-time">2024-01-14 at 3:00 PM</div>
+                            </div>
+                            <i class="fas fa-ellipsis-v"></i>
+                        </li>
+                        <li class="symptom-item">
+                            <div>
+                                <div class="symptom-name">Fatigue <span class="severity-indicator severity-mild">Mild</span></div>
+                                <div class="symptom-time">2024-01-14 at 2:00 PM</div>
+                            </div>
+                            <i class="fas fa-ellipsis-v"></i>
+                        </li>
+                    </ul>
+                    <button class="btn" id="logSymptomBtn"><i class="fas fa-plus"></i> Log Symptom</button>
+                </div>
+            </div>
+            
+            <div class="right-column">
+                <div class="card">
+                    <h2 class="card-title"><i class="far fa-calendar-alt"></i> Upcoming Appointments</h2>
+                    <div class="appointment-item">
+                        <div class="appointment-type">Regular Checkup</div>
+                        <div class="appointment-doctor">with Dr. Smith</div>
+                        <div class="appointment-time"><i class="far fa-clock"></i> 2024-01-20 at 10:00 AM</div>
+                    </div>
+                    <div class="appointment-item">
+                        <div class="appointment-type">Ultrasound</div>
+                        <div class="appointment-doctor">with Dr. Johnson</div>
+                        <div class="appointment-time"><i class="far fa-clock"></i> 2024-01-25 at 2:30 PM</div>
+                    </div>
+                    <button class="btn"><i class="fas fa-plus"></i> Schedule Appointment</button>
+                </div>
+                
+                <div class="card health-tips">
+                    <h2 class="card-title"><i class="fas fa-lightbulb"></i> Health Monitoring Tips</h2>
+                    <ul class="tips-list">
+                        <li>Monitor your blood pressure regularly, especially if you have a history of hypertension.</li>
+                        <li>Track your weight gain to ensure it's within the healthy range for your pregnancy.</li>
+                        <li>Log any unusual symptoms and discuss them with your healthcare provider.</li>
+                        <li>Stay hydrated and maintain a balanced diet with proper nutrition.</li>
+                        <li>Get regular exercise as recommended by your healthcare provider.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Log Symptom Modal -->
+    <div class="modal" id="symptomModal">
+        <div class="modal-content">
+            <h2 class="modal-title">Log New Symptom</h2>
+            <form id="symptomForm">
+                <div class="form-group">
+                    <label for="symptomType">Symptom Type</label>
+                    <select id="symptomType" required>
+                        <option value="">Select a symptom</option>
+                        <option value="Morning Sickness">Morning Sickness</option>
+                        <option value="Back Pain">Back Pain</option>
+                        <option value="Fatigue">Fatigue</option>
+                        <option value="Headache">Headache</option>
+                        <option value="Swelling">Swelling</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="symptomDate">Date & Time</label>
+                    <input type="datetime-local" id="symptomDate" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="symptomSeverity">Severity</label>
+                    <select id="symptomSeverity" required>
+                        <option value="Mild">Mild</option>
+                        <option value="Moderate">Moderate</option>
+                        <option value="Severe">Severe</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="symptomNotes">Additional Notes</label>
+                    <textarea id="symptomNotes" placeholder="Add any details about your symptom..."></textarea>
+                </div>
+                
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-secondary" id="closeModal">Cancel</button>
+                    <button type="submit" class="btn">Save Symptom</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Modal functionality
+        const symptomModal = document.getElementById('symptomModal');
+        const logSymptomBtn = document.getElementById('logSymptomBtn');
+        const closeModal = document.getElementById('closeModal');
+        const symptomForm = document.getElementById('symptomForm');
+        
+        logSymptomBtn.addEventListener('click', () => {
+            symptomModal.style.display = 'flex';
+        });
+        
+        closeModal.addEventListener('click', () => {
+            symptomModal.style.display = 'none';
+        });
+        
+        symptomForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Symptom logged successfully!');
+            symptomModal.style.display = 'none';
+        });
+        
+        // Close modal when clicking outside
+        window.addEventListener('click', (e) => {
+            if (e.target === symptomModal) {
+                symptomModal.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

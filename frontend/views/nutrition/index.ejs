@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nutrition - Aarogya Shield</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', 'Segoe UI', sans-serif;
+        }
+        
+        body {
+            background: #f0f7ff;
+            color: #2b2d42;
+            line-height: 1.6;
+        }
+        
+        .nutrition-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Navigation Bar */
+        .nav-bar {
+            background: white;
+            border-radius: 15px;
+            padding: 15px 25px;
+            margin-bottom: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .app-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+            font-size: 20px;
+            color: #0c7cba;
+        }
+        
+        .app-brand i {
+            font-size: 24px;
+        }
+        
+        .nav-items {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: #6c757d;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-item i {
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+        
+        .nav-item.active {
+            color: #0c7cba;
+        }
+        
+        .nav-item:hover {
+            color: #0c7cba;
+            transform: translateY(-2px);
+        }
+        
+        /* Header */
+        .nutrition-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(120deg, #0c7cba 0%, #3bb6b5 100%);
+            padding: 20px 30px;
+            border-radius: 15px;
+            color: white;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 15px rgba(12, 124, 186, 0.2);
+        }
+        
+        .user-info h1 {
+            font-size: 28px;
+            margin-bottom: 5px;
+        }
+        
+        .user-info p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        
+        .week-info {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+        }
+        
+        .logout-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 50px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .logout-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        /* Main Content Layout */
+        .nutrition-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 25px;
+            margin-bottom: 25px;
+        }
+        
+        /* Cards */
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 25px;
+        }
+        
+        .card h2 {
+            color: #0c7cba;
+            margin-bottom: 20px;
+            font-size: 24px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f0f7ff;
+        }
+        
+        .card h3 {
+            color: #0c7cba;
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+        
+        /* Nutrition Goals */
+        .goal-item {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+        
+        .goal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .goal-title {
+            font-weight: 600;
+            color: #2b2d42;
+        }
+        
+        .goal-value {
+            font-weight: 600;
+            color: #0c7cba;
+        }
+        
+        .progress-bar {
+            height: 8px;
+            background: #e9ecef;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 5px;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #0c7cba, #3bb6b5);
+            border-radius: 4px;
+        }
+        
+        .progress-text {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            color: #6c757d;
+        }
+        
+        /* Nutrition Tracker */
+        .nutrient-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        
+        .nutrient-item {
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        .nutrient-name {
+            font-weight: 600;
+            color: #2b2d42;
+            margin-bottom: 5px;
+        }
+        
+        .nutrient-amount {
+            font-size: 18px;
+            font-weight: 700;
+            color: #0c7cba;
+            margin-bottom: 5px;
+        }
+        
+        .nutrient-percentage {
+            font-size: 14px;
+            color: #6c757d;
+        }
+        
+        /* Water Intake */
+        .water-card {
+            background: linear-gradient(135deg, #0c7cba 0%, #3bb6b5 100%);
+            color: white;
+        }
+        
+        .water-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .add-button {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .add-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        .water-progress {
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .water-glasses {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        
+        .water-goal {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        
+        /* Today's Meals */
+        .meal-list {
+            margin-bottom: 20px;
+        }
+        
+        .meal-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .meal-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .meal-checkbox {
+            width: 20px;
+            height: 20px;
+        }
+        
+        .meal-details h4 {
+            font-weight: 600;
+            color: #2b2d42;
+            margin-bottom: 2px;
+        }
+        
+        .meal-time {
+            font-size: 12px;
+            color: #6c757d;
+        }
+        
+        .meal-calories {
+            font-weight: 600;
+            color: #0c7cba;
+        }
+        
+        /* Nutrition Tips */
+        .tips-list {
+            list-style: none;
+        }
+        
+        .tips-list li {
+            margin-bottom: 12px;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .tips-list li:before {
+            content: "•";
+            color: #0c7cba;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .nutrition-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .nutrient-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nutrition-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+            
+            .nav-bar {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .nav-items {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .nutrition-container {
+                padding: 15px;
+            }
+            
+            .nav-items {
+                gap: 10px;
+            }
+            
+            .nav-item {
+                font-size: 12px;
+            }
+            
+            .nav-item i {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="nutrition-container">
+        <!-- Navigation Bar -->
+        <div class="nav-bar">
+            <div class="app-brand">
+                <i class="fas fa-shield-alt"></i>
+                <span>Aarogya Shield</span>
+            </div>
+            <div class="nav-items">
+                <a href="/dashboard" class="nav-item">
+                    <i class="fas fa-home"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="/nutrition" class="nav-item active">
+                    <i class="fas fa-utensils"></i>
+                    <span>Nutrition</span>
+                </a>
+                <a href="/health" class="nav-item">
+                    <i class="fas fa-heartbeat"></i>
+                    <span>Health</span>
+                </a>
+                <a href="/routine" class="nav-item">
+                    <i class="fas fa-calendar-check"></i>
+                    <span>Routine</span>
+                </a>
+                <a href="/tips" class="nav-item">
+                    <i class="fas fa-lightbulb"></i>
+                    <span>Tips Learn</span>
+                </a>
+                <a href="/profile" class="nav-item">
+                    <i class="fas fa-user-circle"></i>
+                    <span>Profile</span>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Header -->
+        <!-- <div class="nutrition-header">
+            <div class="user-info">
+                <h1>Welcome, <%= user.name %>!</h1>
+                <p>Track your nutrition for a healthy pregnancy</p>
+            </div>
+            <div class="week-info">Week 24</div>
+            <a href="/logout" class="logout-btn">Logout</a>
+        </div> -->
+
+        <!-- Today's Meals - Moved to top as requested -->
+        <div class="card">
+            <h2>Today's Meals</h2>
+            
+            <div class="meal-list">
+                <div class="meal-item">
+                    <div class="meal-info">
+                        <input type="checkbox" class="meal-checkbox">
+                        <div class="meal-details">
+                            <h4>Oatmeal with berries</h4>
+                            <span class="meal-time">8:00 AM</span>
+                        </div>
+                    </div>
+                    <span class="meal-calories">320 calories</span>
+                </div>
+                
+                <div class="meal-item">
+                    <div class="meal-info">
+                        <input type="checkbox" class="meal-checkbox" checked>
+                        <div class="meal-details">
+                            <h4>Greek yogurt with nuts</h4>
+                            <span class="meal-time">10:30 AM</span>
+                        </div>
+                    </div>
+                    <span class="meal-calories">180 calories</span>
+                </div>
+                
+                <div class="meal-item">
+                    <div class="meal-info">
+                        <input type="checkbox" class="meal-checkbox">
+                        <div class="meal-details">
+                            <h4>Grilled chicken salad</h4>
+                            <span class="meal-time">1:00 PM</span>
+                        </div>
+                    </div>
+                    <span class="meal-calories">450 calories</span>
+                </div>
+                
+                <div class="meal-item">
+                    <div class="meal-info">
+                        <input type="checkbox" class="meal-checkbox" checked>
+                        <div class="meal-details">
+                            <h4>Apple with peanut butter</h4>
+                            <span class="meal-time">4:00 PM</span>
+                        </div>
+                    </div>
+                    <span class="meal-calories">200 calories</span>
+                </div>
+            </div>
+            
+            <button class="add-button">+ Add Meal</button>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="nutrition-content">
+            <!-- Left Column -->
+            <div class="left-column">
+                <!-- Daily Nutrition Goals -->
+                <div class="card">
+                    <h2>Daily Nutrition Goals</h2>
+                    
+                    <div class="goal-item">
+                        <div class="goal-header">
+                            <span class="goal-title">Calories</span>
+                            <span class="goal-value">1850/2200 kcal</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 84%;"></div>
+                        </div>
+                        <div class="progress-text">
+                            <span>84% complete</span>
+                        </div>
+                    </div>
+                    
+                    <div class="goal-item">
+                        <div class="goal-header">
+                            <span class="goal-title">Iron</span>
+                            <span class="goal-value">18/27 mg</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 67%;"></div>
+                        </div>
+                        <div class="progress-text">
+                            <span>67% complete</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Nutrition Tracker -->
+                <div class="card">
+                    <h2>Nutrition Tracker</h2>
+                    <p style="color: #6c757d; margin-bottom: 20px;">Monitor your daily nutrition for a healthy pregnancy</p>
+                    
+                    <div class="nutrient-grid">
+                        <div class="nutrient-item">
+                            <div class="nutrient-name">Protein</div>
+                            <div class="nutrient-amount">65/75 g</div>
+                            <div class="nutrient-percentage">87% complete</div>
+                        </div>
+                        
+                        <div class="nutrient-item">
+                            <div class="nutrient-name">Folic Acid</div>
+                            <div class="nutrient-amount">400/600 mcg</div>
+                            <div class="nutrient-percentage">67% complete</div>
+                        </div>
+                        
+                        <div class="nutrient-item">
+                            <div class="nutrient-name">Calcium</div>
+                            <div class="nutrient-amount">800/1000 mg</div>
+                            <div class="nutrient-percentage">80% complete</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Right Column -->
+            <div class="right-column">
+                <!-- Water Intake -->
+                <div class="card water-card">
+                    <div class="water-header">
+                        <h2>Water Intake</h2>
+                        <button class="add-button">+ Log Water</button>
+                    </div>
+                    
+                    <div class="water-progress">
+                        <div class="water-glasses">6/8 glasses</div>
+                        <div class="water-goal">Daily Goal: 8 glasses</div>
+                    </div>
+                </div>
+                
+                <!-- Nutrition Tips -->
+                <div class="card">
+                    <h2>Nutrition Tips for Week 24</h2>
+                    
+                    <ul class="tips-list">
+                        <li>Include iron-rich foods like spinach, lean meats, and beans to prevent anemia.</li>
+                        <li>Consume calcium-rich dairy products or fortified alternatives for baby's bone development.</li>
+                        <li>Eat small, frequent meals to help manage heartburn and maintain energy levels.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Interactive functionality
+        document.querySelectorAll('.meal-checkbox').forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                const mealItem = this.closest('.meal-item');
+                if (this.checked) {
+                    mealItem.style.opacity = '0.7';
+                } else {
+                    mealItem.style.opacity = '1';
+                }
+            });
+        });
+        
+        document.querySelectorAll('.add-button').forEach(button => {
+            button.addEventListener('click', function() {
+                alert('Add functionality will be implemented soon!');
+            });
+        });
+    </script>
+</body>
+</html>

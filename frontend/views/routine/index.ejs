@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Routine - SIH Project</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .dashboard-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Navigation Bar */
+        .nav-bar {
+            background: white;
+            border-radius: 15px;
+            padding: 15px 25px;
+            margin-bottom: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .app-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+            font-size: 20px;
+            color: #0c7cba;
+        }
+        
+        .app-brand i {
+            font-size: 24px;
+        }
+        
+        .nav-items {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: #6c757d;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-item i {
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+        
+        .nav-item.active {
+            color: #0c7cba;
+        }
+        
+        .nav-item:hover {
+            color: #0c7cba;
+        }
+        
+      
+        header {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        header h1 i {
+            margin-right: 15px;
+            font-size: 32px;
+        }
+        
+        header p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        
+        .dashboard {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+        
+        @media (max-width: 900px) {
+            .dashboard {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 25px;
+        }
+        
+        .card-title {
+            font-size: 20px;
+            color: #6a11cb;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f0f0f0;
+            display: flex;
+            align-items: center;
+        }
+        
+        .card-title i {
+            margin-right: 10px;
+        }
+        
+        .progress-container {
+            text-align: center;
+            padding: 15px;
+        }
+        
+        .progress-circle {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 20px;
+        }
+        
+        .progress-circle svg {
+            width: 100%;
+            height: 100%;
+            transform: rotate(-90deg);
+        }
+        
+        .progress-circle circle {
+            fill: none;
+            stroke-width: 10;
+            stroke-linecap: round;
+            transform-origin: center;
+        }
+        
+        .progress-circle .background {
+            stroke: #f0f0f0;
+        }
+        
+        .progress-circle .progress {
+            stroke: #6a11cb;
+            stroke-dasharray: 472;
+            stroke-dashoffset: calc(472 - (472 * var(--progress)) / 100);
+            transition: stroke-dashoffset 0.5s ease;
+        }
+        
+        .progress-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+        
+        .progress-percent {
+            font-size: 24px;
+            font-weight: 700;
+            color: #6a11cb;
+        }
+        
+        .progress-label {
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 15px;
+            border-radius: 8px;
+            background: #f8f9fa;
+        }
+        
+        .stat-value {
+            font-size: 24px;
+            font-weight: 700;
+            color: #6a11cb;
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .tasks-list {
+            list-style: none;
+        }
+        
+        .task-item {
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            background: #f8f9fa;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .task-item:hover {
+            background: #edf2ff;
+        }
+        
+        .task-info {
+            flex: 1;
+        }
+        
+        .task-name {
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+        
+        .task-time {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .task-status {
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .status-completed {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        .status-pending {
+            background: #fff3cd;
+            color: #856404;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: #6a11cb;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 15px;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background: #5a0fb8;
+            transform: translateY(-2px);
+        }
+        
+        .btn i {
+            margin-right: 8px;
+        }
+        
+        .goals-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+        
+        .goal-item {
+            padding: 15px;
+            border-radius: 8px;
+            background: #f8f9fa;
+        }
+        
+        .goal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .goal-name {
+            font-weight: 500;
+            color: #6a11cb;
+        }
+        
+        .goal-value {
+            font-weight: 700;
+            color: #6a11cb;
+        }
+        
+        .goal-progress {
+            height: 8px;
+            background: #e9ecef;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 8px;
+        }
+        
+        .goal-progress-bar {
+            height: 100%;
+            background: #6a11cb;
+            border-radius: 4px;
+        }
+        
+        .goal-percent {
+            font-size: 12px;
+            color: #666;
+            text-align: right;
+        }
+        
+        .tips-list {
+            list-style: none;
+            padding-left: 10px;
+        }
+        
+        .tips-list li {
+            margin-bottom: 15px;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .tips-list li:before {
+            content: "•";
+            color: #6a11cb;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            font-size: 20px;
+        }
+        
+        .routine-tips {
+            background: linear-gradient(to right, #edf2ff, #f8f9fa);
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        
+        .modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .modal-title {
+            font-size: 22px;
+            color: #6a11cb;
+            margin-bottom: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+        
+        .form-group textarea {
+            height: 100px;
+            resize: vertical;
+        }
+        
+        .modal-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .btn-secondary {
+            background: #6c757d;
+        }
+        
+        .btn-secondary:hover {
+            background: #5a6268;
+        }
+    </style>
+</head>
+<body>
+     <div class="dashboard-container">
+        <!-- Navigation Bar -->
+        <div class="nav-bar">
+            <div class="app-brand">
+                <i class="fas fa-shield-alt"></i>
+                <span>Aarogya Shield</span>
+            </div>
+            <div class="nav-items">
+                <a href="/dashboard" class="nav-item ">
+                    <i class="fas fa-home"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="/nutrition" class="nav-item">
+                    <i class="fas fa-utensils"></i>
+                    <span>Nutrition</span>
+                </a>
+                <a href="/health" class="nav-item">
+                    <i class="fas fa-heartbeat"></i>
+                    <span>Health</span>
+                </a>
+                <a href="/routine" class="nav-item active">
+                    <i class="fas fa-calendar-check"></i>
+                    <span>Routine</span>
+                </a>
+                <a href="/tips" class="nav-item">
+                    <i class="fas fa-lightbulb"></i>
+                    <span>Tips </span>
+                </a>
+                <a href="/profile" class="nav-item">
+                    <i class="fas fa-user-circle"></i>
+                    <span>Profile</span>
+                </a>
+            </div>
+        </div>
+        
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-tasks"></i> Daily Routine</h1>
+            <p>Stay organized with your pregnancy wellness routine</p>
+        </header>
+        
+        <div class="dashboard">
+            <div class="left-column">
+                <div class="card">
+                    <h2 class="card-title"><i class="fas fa-chart-line"></i> Today's Progress</h2>
+                    <div class="progress-container">
+                        <div class="progress-circle">
+                            <svg>
+                                <circle class="background" cx="75" cy="75" r="70"></circle>
+                                <circle class="progress" cx="75" cy="75" r="70" style="--progress: 38"></circle>
+                            </svg>
+                            <div class="progress-text">
+                                <div class="progress-percent">38%</div>
+                                <div class="progress-label">complete</div>
+                            </div>
+                        </div>
+                        <h3>Daily Routine Completion</h3>
+                        <p>3/8 tasks</p>
+                    </div>
+                    
+                    <div class="stats">
+                        <div class="stat-item">
+                            <div class="stat-value">3</div>
+                            <div class="stat-label">Completed</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">5</div>
+                            <div class="stat-label">Remaining</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">8</div>
+                            <div class="stat-label">Total Tasks</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">7</div>
+                            <div class="stat-label">Day Streak</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h2 class="card-title"><i class="far fa-calendar-check"></i> Today's Tasks</h2>
+                    <ul class="tasks-list">
+                        <li class="task-item">
+                            <div class="task-info">
+                                <div class="task-name">Morning Prenatal Vitamins</div>
+                                <div class="task-time">8:00 AM</div>
+                            </div>
+                            <span class="task-status status-completed">Completed</span>
+                        </li>
+                        <li class="task-item">
+                            <div class="task-info">
+                                <div class="task-name">Light Morning Walk</div>
+                                <div class="task-time">8:30 AM</div>
+                            </div>
+                            <span class="task-status status-completed">Completed</span>
+                        </li>
+                        <li class="task-item">
+                            <div class="task-info">
+                                <div class="task-name">Healthy Breakfast</div>
+                                <div class="task-time">9:00 AM</div>
+                            </div>
+                            <span class="task-status status-completed">Completed</span>
+                        </li>
+                        <li class="task-item">
+                            <div class="task-info">
+                                <div class="task-name">Hydration Check</div>
+                                <div class="task-time">12:00 PM</div>
+                            </div>
+                            <span class="task-status status-pending">Pending</span>
+                        </li>
+                        <li class="task-item">
+                            <div class="task-info">
+                                <div class="task-name">Afternoon Rest</div>
+                                <div class="task-time">2:00 PM</div>
+                            </div>
+                            <span class="task-status status-pending">Pending</span>
+                        </li>
+                        <li class="task-item">
+                            <div class="task-info">
+                                <div class="task-name">Evening Prenatal Yoga</div>
+                                <div class="task-time">6:00 PM</div>
+                            </div>
+                            <span class="task-status status-pending">Pending</span>
+                        </li>
+                        <li class="task-item">
+                            <div class="task-info">
+                                <div class="task-name">Dinner with Protein</div>
+                                <div class="task-time">7:00 PM</div>
+                            </div>
+                            <span class="task-status status-pending">Pending</span>
+                        </li>
+                        <li class="task-item">
+                            <div class="task-info">
+                                <div class="task-name">Relaxation Time</div>
+                                <div class="task-time">9:00 PM</div>
+                            </div>
+                            <span class="task-status status-pending">Pending</span>
+                        </li>
+                    </ul>
+                    <button class="btn" id="addTaskBtn"><i class="fas fa-plus"></i> Add Task</button>
+                </div>
+            </div>
+            
+            <div class="right-column">
+                <div class="card">
+                    <h2 class="card-title"><i class="fas fa-bullseye"></i> Weekly Goals</h2>
+                    <div class="goals-container">
+                        <div class="goal-item">
+                            <div class="goal-header">
+                                <div class="goal-name">Exercise</div>
+                                <div class="goal-value">36/60</div>
+                            </div>
+                            <div class="goal-progress">
+                                <div class="goal-progress-bar" style="width: 60%"></div>
+                            </div>
+                            <div class="goal-percent">60% complete</div>
+                        </div>
+                        
+                        <div class="goal-item">
+                            <div class="goal-header">
+                                <div class="goal-name">Water</div>
+                                <div class="goal-value">12/24</div>
+                            </div>
+                            <div class="goal-progress">
+                                <div class="goal-progress-bar" style="width: 50%"></div>
+                            </div>
+                            <div class="goal-percent">50% complete</div>
+                        </div>
+                        
+                        <div class="goal-item">
+                            <div class="goal-header">
+                                <div class="goal-name">Meditation</div>
+                                <div class="goal-value">27/30</div>
+                            </div>
+                            <div class="goal-progress">
+                                <div class="goal-progress-bar" style="width: 90%"></div>
+                            </div>
+                            <div class="goal-percent">90% complete</div>
+                        </div>
+                        
+                        <div class="goal-item">
+                            <div class="goal-header">
+                                <div class="goal-name">Doctor Visits</div>
+                                <div class="goal-value">2/2</div>
+                            </div>
+                            <div class="goal-progress">
+                                <div class="goal-progress-bar" style="width: 100%"></div>
+                            </div>
+                            <div class="goal-percent">100% complete</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card routine-tips">
+                    <h2 class="card-title"><i class="fas fa-lightbulb"></i> Routine Tips</h2>
+                    <ul class="tips-list">
+                        <li>Start your day with prenatal vitamins to ensure proper nutrition for you and your baby.</li>
+                        <li>Include gentle exercise like walking or prenatal yoga to maintain fitness and reduce stress.</li>
+                        <li>Schedule regular rest periods throughout the day to combat pregnancy fatigue.</li>
+                        <li>Stay hydrated by drinking plenty of water throughout the day.</li>
+                        <li>Practice relaxation techniques to manage stress and promote better sleep.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Add Task Modal -->
+    <div class="modal" id="taskModal">
+        <div class="modal-content">
+            <h2 class="modal-title">Add New Task</h2>
+            <form id="taskForm">
+                <div class="form-group">
+                    <label for="taskName">Task Name</label>
+                    <input type="text" id="taskName" placeholder="Enter task name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="taskTime">Time</label>
+                    <input type="time" id="taskTime" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="taskCategory">Category</label>
+                    <select id="taskCategory" required>
+                        <option value="">Select a category</option>
+                        <option value="Nutrition">Nutrition</option>
+                        <option value="Exercise">Exercise</option>
+                        <option value="Rest">Rest</option>
+                        <option value="Medication">Medication</option>
+                        <option value="Appointment">Appointment</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="taskNotes">Notes (Optional)</label>
+                    <textarea id="taskNotes" placeholder="Add any details about this task..."></textarea>
+                </div>
+                
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-secondary" id="closeModal">Cancel</button>
+                    <button type="submit" class="btn">Add Task</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Modal functionality
+        const taskModal = document.getElementById('taskModal');
+        const addTaskBtn = document.getElementById('addTaskBtn');
+        const closeModal = document.getElementById('closeModal');
+        const taskForm = document.getElementById('taskForm');
+        
+        addTaskBtn.addEventListener('click', () => {
+            taskModal.style.display = 'flex';
+        });
+        
+        closeModal.addEventListener('click', () => {
+            taskModal.style.display = 'none';
+        });
+        
+        taskForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Task added successfully!');
+            taskModal.style.display = 'none';
+        });
+        
+        // Close modal when clicking outside
+        window.addEventListener('click', (e) => {
+            if (e.target === taskModal) {
+                taskModal.style.display = 'none';
+            }
+        });
+        
+        // Toggle task status
+        const taskItems = document.querySelectorAll('.task-item');
+        taskItems.forEach(item => {
+            item.addEventListener('dblclick', () => {
+                const status = item.querySelector('.task-status');
+                if (status.classList.contains('status-completed')) {
+                    status.classList.remove('status-completed');
+                    status.classList.add('status-pending');
+                    status.textContent = 'Pending';
+                } else {
+                    status.classList.remove('status-pending');
+                    status.classList.add('status-completed');
+                    status.textContent = 'Completed';
+                    updateProgress();
+                }
+            });
+        });
+        
+        // Update progress circle
+        function updateProgress() {
+            const completed = document.querySelectorAll('.status-completed').length;
+            const total = document.querySelectorAll('.task-status').length;
+            const percent = Math.round((completed / total) * 100);
+            
+            document.querySelector('.progress-percent').textContent = percent + '%';
+            document.documentElement.style.setProperty('--progress', percent);
+            
+            document.querySelectorAll('.stat-value')[0].textContent = completed;
+            document.querySelectorAll('.stat-value')[1].textContent = total - completed;
+        }
+    </script>
+</body>
+</html>

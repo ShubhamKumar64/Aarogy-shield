@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %> - Aarogya Shield</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', 'Segoe UI', sans-serif;
+        }
+        
+        body {
+            background: #f0f7ff;
+            color: #2b2d42;
+            line-height: 1.6;
+        }
+        
+        .dashboard-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Navigation Bar */
+        .nav-bar {
+            background: white;
+            border-radius: 15px;
+            padding: 15px 25px;
+            margin-bottom: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .app-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+            font-size: 20px;
+            color: #0c7cba;
+        }
+        
+        .app-brand i {
+            font-size: 24px;
+        }
+        
+        .nav-items {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: #6c757d;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-item i {
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+        
+        .nav-item.active {
+            color: #0c7cba;
+        }
+        
+        .nav-item:hover {
+            color: #0c7cba;
+            transform: translateY(-2px);
+        }
+        
+        /* Header Styles */
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(120deg, #0c7cba 0%, #3bb6b5 100%);
+            padding: 20px 30px;
+            border-radius: 15px;
+            color: white;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 15px rgba(12, 124, 186, 0.2);
+        }
+        
+        .user-info h1 {
+            font-size: 28px;
+            margin-bottom: 5px;
+        }
+        
+        .user-info p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        
+        .week-info {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+        }
+        
+        .logout-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 50px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .logout-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        /* Progress Section */
+        .progress-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin-bottom: 25px;
+        }
+        
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .card h3 {
+            color: #0c7cba;
+            margin-bottom: 20px;
+            font-size: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f0f7ff;
+        }
+        
+        .baby-size {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .baby-size-icon {
+            background: #e8f4fc;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 24px;
+            color: #0c7cba;
+        }
+        
+        .baby-size-info h4 {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+        
+        .baby-size-info p {
+            color: #6c757d;
+            font-size: 14px;
+        }
+        
+        .due-date {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        
+        .due-date h4 {
+            color: #0c7cba;
+            margin-bottom: 10px;
+        }
+        
+        .due-date-content {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .due-date-number {
+            font-size: 32px;
+            font-weight: 700;
+            color: #0c7cba;
+        }
+        
+        .due-date-text {
+            font-size: 16px;
+            font-weight: 600;
+            color: #2b2d42;
+        }
+        
+        /* Quick Actions */
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .section-header h3 {
+            color: #0c7cba;
+            font-size: 20px;
+        }
+        
+        .week-badge {
+            background: #e8f4fc;
+            color: #0c7cba;
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        
+        .action-buttons {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        
+        .action-btn {
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .action-btn:hover {
+            background: #0c7cba;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(12, 124, 186, 0.2);
+        }
+        
+        .action-btn i {
+            font-size: 24px;
+            margin-bottom: 10px;
+            display: block;
+            color: #0c7cba;
+        }
+        
+        .action-btn:hover i {
+            color: white;
+        }
+        
+        /* Goals Section */
+        .goals-section {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 25px;
+            margin-bottom: 25px;
+        }
+        
+        .goal-item {
+            margin-bottom: 20px;
+        }
+        
+        .goal-item h4 {
+            font-size: 16px;
+            margin-bottom: 10px;
+            color: #2b2d42;
+        }
+        
+        .progress-bar {
+            height: 10px;
+            background: #f0f7ff;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-bottom: 5px;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #0c7cba, #3bb6b5);
+            border-radius: 5px;
+        }
+        
+        .progress-text {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            color: #6c757d;
+        }
+        
+        /* Tip Card */
+        .tip-card {
+            background: linear-gradient(120deg, #0c7cba 0%, #3bb6b5 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(12, 124, 186, 0.2);
+        }
+        
+        .tip-card h3 {
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+        
+        .tip-card p {
+            line-height: 1.6;
+            font-size: 16px;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .progress-section,
+            .goals-section {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .dashboard-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+            
+            .action-buttons {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .nav-bar {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .nav-items {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .action-buttons {
+                grid-template-columns: 1fr;
+            }
+            
+            .dashboard-container {
+                padding: 15px;
+            }
+            
+            .nav-items {
+                gap: 10px;
+            }
+            
+            .nav-item {
+                font-size: 12px;
+            }
+            
+            .nav-item i {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Navigation Bar -->
+        <div class="nav-bar">
+            <div class="app-brand">
+                <i class="fas fa-shield-alt"></i>
+                <span>Aarogya Shield</span>
+            </div>
+            <div class="nav-items">
+                <a href="/dashboard" class="nav-item active">
+                    <i class="fas fa-home"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="/nutrition" class="nav-item">
+                    <i class="fas fa-utensils"></i>
+                    <span>Nutrition</span>
+                </a>
+                <a href="/health" class="nav-item">
+                    <i class="fas fa-heartbeat"></i>
+                    <span>Health</span>
+                </a>
+                <a href="/routine" class="nav-item">
+                    <i class="fas fa-calendar-check"></i>
+                    <span>Routine</span>
+                </a>
+                <a href="/tips" class="nav-item">
+                    <i class="fas fa-lightbulb"></i>
+                    <span>Tips</span>
+                </a>
+                <a href="/profile" class="nav-item">
+                    <i class="fas fa-user-circle"></i>
+                    <span>Profile</span>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Header -->
+        <div class="dashboard-header">
+            <div class="user-info">
+                <h1>Welcome, <%= user.name %>!</h1>
+                <p>Let's take care of you and your little one today.</p>
+            </div>
+            <div class="week-info">Week 24</div>
+            <a href="/logout" class="logout-btn">Logout</a>
+        </div>
+        
+        <!-- Pregnancy Progress -->
+        <div class="progress-section">
+            <div class="card">
+                <h3>Pregnancy Progress</h3>
+                <div class="baby-size">
+                    <div class="baby-size-icon">
+                        <i class="fas fa-baby"></i>
+                    </div>
+                    <div class="baby-size-info">
+                        <h4>Your Baby This Week</h4>
+                        <p><strong>Size of a Cantaloupe</strong> - 1.3 lbs - 12 inches</p>
+                    </div>
+                </div>
+                <div class="due-date">
+                    <h4>Days Until Due Date</h4>
+                    <div class="due-date-content">
+                        <div class="due-date-number">0</div>
+                        <div class="due-date-text">June 15, 2025</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="section-header">
+                    <h3>Quick Actions</h3>
+                    <div class="week-badge">Week 24</div>
+                </div>
+                <div class="action-buttons">
+                    <div class="action-btn">
+                        <i class="fas fa-notes-medical"></i>
+                        <span>Log Symptoms</span>
+                    </div>
+                    <div class="action-btn">
+                        <i class="fas fa-calendar-check"></i>
+                        <span>Schedule Checkup</span>
+                    </div>
+                    <div class="action-btn">
+                        <i class="fas fa-pills"></i>
+                        <span>Medication Reminder</span>
+                    </div>
+                    <div class="action-btn">
+                        <i class="fas fa-lightbulb"></i>
+                        <span>Daily Tips</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Today's Goals & Tip -->
+        <div class="goals-section">
+            <div class="card">
+                <h3>Today's Goals</h3>
+                <div class="goal-item">
+                    <h4>Water Intake</h4>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 75%;"></div>
+                    </div>
+                    <div class="progress-text">
+                        <span>6/8 glasses</span>
+                        <span>75%</span>
+                    </div>
+                </div>
+                <div class="goal-item">
+                    <h4>Steps</h4>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 75%;"></div>
+                    </div>
+                    <div class="progress-text">
+                        <span>4500/6000 steps</span>
+                        <span>75%</span>
+                    </div>
+                </div>
+                <div class="goal-item">
+                    <h4>Sleep</h4>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 94%;"></div>
+                    </div>
+                    <div class="progress-text">
+                        <span>7.5/8 hours</span>
+                        <span>94%</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tip-card">
+                <h3>Today's Tip</h3>
+                <p>Stay hydrated! Drinking plenty of water helps maintain amniotic fluid levels and supports your baby's development. Aim for 8-10 glasses.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Simple interactive functionality
+        document.querySelectorAll('.action-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const action = this.querySelector('span').textContent;
+                alert(`You selected: ${action}`);
+            });
+        });
+    </script>
+</body>
+</html>

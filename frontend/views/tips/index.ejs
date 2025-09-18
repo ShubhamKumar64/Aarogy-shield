@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pregnancy Tips - SIH Project</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .dashboard-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Navigation Bar */
+        .nav-bar {
+            background: white;
+            border-radius: 15px;
+            padding: 15px 25px;
+            margin-bottom: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .app-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+            font-size: 20px;
+            color: #0c7cba;
+        }
+        
+        .app-brand i {
+            font-size: 24px;
+        }
+        
+        .nav-items {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: #6c757d;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-item i {
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+        
+        .nav-item.active {
+            color: #0c7cba;
+        }
+        
+        .nav-item:hover {
+            color: #0c7cba;
+            transform: translateY(-2px);
+        }
+        header {
+            background: linear-gradient(135deg, #8e44ad, #6c5ce7);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        header h1 i {
+            margin-right: 15px;
+            font-size: 32px;
+        }
+        
+        header p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        
+        .dashboard {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+        
+        @media (max-width: 900px) {
+            .dashboard {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 25px;
+        }
+        
+        .card-title {
+            font-size: 20px;
+            color: #8e44ad;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f0f0f0;
+            display: flex;
+            align-items: center;
+        }
+        
+        .card-title i {
+            margin-right: 10px;
+        }
+        
+        .categories {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .category-btn {
+            padding: 8px 15px;
+            border-radius: 20px;
+            background: #f0f0f0;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 14px;
+        }
+        
+        .category-btn:hover, .category-btn.active {
+            background: #8e44ad;
+            color: white;
+        }
+        
+        .tips-list {
+            list-style: none;
+        }
+        
+        .tip-item {
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            background: #f8f9fa;
+            border-left: 4px solid #8e44ad;
+            transition: transform 0.3s;
+        }
+        
+        .tip-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .tip-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 10px;
+        }
+        
+        .tip-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #8e44ad;
+            margin-bottom: 5px;
+        }
+        
+        .tip-meta {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 10px;
+        }
+        
+        .tip-priority {
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .priority-high {
+            background: #ffcccc;
+            color: #cc0000;
+        }
+        
+        .priority-medium {
+            background: #fff3cd;
+            color: #856404;
+        }
+        
+        .tip-weeks {
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .tip-content {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        
+        .tip-actions {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .tip-action {
+            color: #8e44ad;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+        }
+        
+        .tip-action i {
+            margin-right: 5px;
+        }
+        
+        .tip-action:hover {
+            text-decoration: underline;
+        }
+        
+        .spotlight {
+            background: linear-gradient(to right, #e3f2fd, #bbdefb);
+            border-left: 4px solid #2196f3;
+        }
+        
+        .spotlight-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .spotlight-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #1565c0;
+        }
+        
+        .spotlight-week {
+            font-size: 16px;
+            font-weight: 500;
+            color: #1565c0;
+            background: #e3f2fd;
+            padding: 5px 10px;
+            border-radius: 20px;
+        }
+        
+        .spotlight-content {
+            margin-bottom: 15px;
+        }
+        
+        .spotlight-important {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            background: #e8f5e9;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+        
+        .spotlight-important i {
+            color: #2e7d32;
+            margin-right: 10px;
+            font-size: 18px;
+        }
+        
+        .spotlight-important-text {
+            color: #2e7d32;
+            font-weight: 500;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: #8e44ad;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 15px;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background: #7d3c98;
+            transform: translateY(-2px);
+        }
+        
+        .btn i {
+            margin-right: 8px;
+        }
+    </style>
+</head>
+<body>
+     <div class="dashboard-container">
+        <!-- Navigation Bar -->
+        <div class="nav-bar">
+            <div class="app-brand">
+                <i class="fas fa-shield-alt"></i>
+                <span>Aarogya Shield</span>
+            </div>
+            <div class="nav-items">
+                <a href="/dashboard" class="nav-item ">
+                    <i class="fas fa-home"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="/nutrition" class="nav-item">
+                    <i class="fas fa-utensils"></i>
+                    <span>Nutrition</span>
+                </a>
+                <a href="/health" class="nav-item">
+                    <i class="fas fa-heartbeat"></i>
+                    <span>Health</span>
+                </a>
+                <a href="/routine" class="nav-item">
+                    <i class="fas fa-calendar-check"></i>
+                    <span>Routine</span>
+                </a>
+                <a href="/tips" class="nav-item active">
+                    <i class="fas fa-lightbulb"></i>
+                    <span>Tips</span>
+                </a>
+                <a href="/profile" class="nav-item">
+                    <i class="fas fa-user-circle"></i>
+                    <span>Profile</span>
+                </a>
+            </div>
+        </div>
+
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-lightbulb"></i> Pregnancy Tips</h1>
+            <p>Personalized advice and tips for your pregnancy journey</p>
+        </header>
+        
+        <div class="dashboard">
+            <div class="left-column">
+                <div class="card">
+                    <h2 class="card-title"><i class="fas fa-folder"></i> Browse by Category</h2>
+                    <div class="categories">
+                        <button class="category-btn active">All Tips</button>
+                        <button class="category-btn">Nutrition</button>
+                        <button class="category-btn">Exercise</button>
+                        <button class="category-btn">Health</button>
+                        <button class="category-btn">Sleep</button>
+                        <button class="category-btn">Baby Care</button>
+                    </div>
+                    
+                    <ul class="tips-list">
+                        <li class="tip-item">
+                            <div class="tip-header">
+                                <div>
+                                    <div class="tip-title">Iron-Rich Foods for Pregnancy</div>
+                                    <div class="tip-meta">
+                                        <span class="tip-priority priority-high">high priority</span>
+                                        <span class="tip-weeks">Week 20-24</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tip-content">
+                                Include spinach, lean meats, beans, and fortified cereals in your diet to prevent anemia and support your baby's development.
+                            </div>
+                            <div class="tip-actions">
+                                <a href="#" class="tip-action"><i class="fas fa-book"></i> Learn More</a>
+                                <a href="#" class="tip-action"><i class="fas fa-share-alt"></i> Share Tip</a>
+                            </div>
+                        </li>
+                        
+                        <li class="tip-item">
+                            <div class="tip-header">
+                                <div>
+                                    <div class="tip-title">Safe Pregnancy Exercises</div>
+                                    <div class="tip-meta">
+                                        <span class="tip-priority priority-medium">medium priority</span>
+                                        <span class="tip-weeks">Week 16-40</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tip-content">
+                                Walking, swimming, and prenatal yoga are excellent low-impact exercises that help maintain fitness and reduce pregnancy discomfort.
+                            </div>
+                            <div class="tip-actions">
+                                <a href="#" class="tip-action"><i class="fas fa-book"></i> Learn More</a>
+                                <a href="#" class="tip-action"><i class="fas fa-share-alt"></i> Share Tip</a>
+                            </div>
+                        </li>
+                        
+                        <li class="tip-item">
+                            <div class="tip-header">
+                                <div>
+                                    <div class="tip-title">Managing Morning Sickness</div>
+                                    <div class="tip-meta">
+                                        <span class="tip-priority priority-high">high priority</span>
+                                        <span class="tip-weeks">Week 6-16</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tip-content">
+                                Eat small, frequent meals, keep crackers by your bedside, and try ginger tea to help reduce nausea and vomiting.
+                            </div>
+                            <div class="tip-actions">
+                                <a href="#" class="tip-action"><i class="fas fa-book"></i> Learn More</a>
+                                <a href="#" class="tip-action"><i class="fas fa-share-alt"></i> Share Tip</a>
+                            </div>
+                        </li>
+                        
+                        <li class="tip-item">
+                            <div class="tip-header">
+                                <div>
+                                    <div class="tip-title">Better Sleep During Pregnancy</div>
+                                    <div class="tip-meta">
+                                        <span class="tip-priority priority-high">high priority</span>
+                                        <span class="tip-weeks">Week 20-40</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tip-content">
+                                Sleep on your left side with a pillow between your knees. This improves blood flow to your baby and reduces back pain.
+                            </div>
+                            <div class="tip-actions">
+                                <a href="#" class="tip-action"><i class="fas fa-book"></i> Learn More</a>
+                                <a href="#" class="tip-action"><i class="fas fa-share-alt"></i> Share Tip</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="right-column">
+                <div class="card">
+                    <h2 class="card-title"><i class="fas fa-star"></i> This Week's Spotlight</h2>
+                    <div class="tip-item spotlight">
+                        <div class="spotlight-header">
+                            <div class="spotlight-title">Glucose Screening Test</div>
+                            <div class="spotlight-week">Week 24</div>
+                        </div>
+                        <div class="spotlight-content">
+                            Around week 24-28, you'll likely have a glucose screening test to check for gestational diabetes. This involves drinking a sweet solution and having your blood tested. Don't worry - it's a routine test that helps ensure both you and your baby stay healthy.
+                        </div>
+                        <div class="spotlight-important">
+                            <i class="fas fa-exclamation-circle"></i>
+                            <div class="spotlight-important-text">Important Test - Discuss with your doctor</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <ul class="tips-list">
+                        <li class="tip-item">
+                            <div class="tip-header">
+                                <div>
+                                    <div class="tip-title">Prenatal Vitamin Importance</div>
+                                    <div class="tip-meta">
+                                        <span class="tip-priority priority-high">high priority</span>
+                                        <span class="tip-weeks">Week 1-40</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tip-content">
+                                Take your prenatal vitamins daily, especially folic acid, to prevent birth defects and support healthy development.
+                            </div>
+                            <div class="tip-actions">
+                                <a href="#" class="tip-action"><i class="fas fa-book"></i> Learn More</a>
+                                <a href="#" class="tip-action"><i class="fas fa-share-alt"></i> Share Tip</a>
+                            </div>
+                        </li>
+                        
+                        <li class="tip-item">
+                            <div class="tip-header">
+                                <div>
+                                    <div class="tip-title">Staying Hydrated</div>
+                                    <div class="tip-meta">
+                                        <span class="tip-priority priority-high">high priority</span>
+                                        <span class="tip-weeks">Week 1-40</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tip-content">
+                                Drink 8-10 glasses of water daily. Proper hydration helps maintain amniotic fluid levels and prevents constipation.
+                            </div>
+                            <div class="tip-actions">
+                                <a href="#" class="tip-action"><i class="fas fa-book"></i> Learn More</a>
+                                <a href="#" class="tip-action"><i class="fas fa-share-alt"></i> Share Tip</a>
+                            </div>
+                        </li>
+                        
+                        <li class="tip-item">
+                            <div class="tip-header">
+                                <div>
+                                    <div class="tip-title">Pelvic Floor Exercises</div>
+                                    <div class="tip-meta">
+                                        <span class="tip-priority priority-medium">medium priority</span>
+                                        <span class="tip-weeks">Week 12-40</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tip-content">
+                                Practice Kegel exercises daily to strengthen pelvic floor muscles, which can help during delivery and recovery.
+                            </div>
+                            <div class="tip-actions">
+                                <a href="#" class="tip-action"><i class="fas fa-book"></i> Learn More</a>
+                                <a href="#" class="tip-action"><i class="fas fa-share-alt"></i> Share Tip</a>
+                            </div>
+                        </li>
+                        
+                        <li class="tip-item">
+                            <div class="tip-header">
+                                <div>
+                                    <div class="tip-title">Preparing for Baby's Arrival</div>
+                                    <div class="tip-meta">
+                                        <span class="tip-priority priority-medium">medium priority</span>
+                                        <span class="tip-weeks">Week 32-36</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tip-content">
+                                Start preparing the nursery, washing baby clothes, and packing your hospital bag around week 32-36.
+                            </div>
+                            <div class="tip-actions">
+                                <a href="#" class="tip-action"><i class="fas fa-book"></i> Learn More</a>
+                                <a href="#" class="tip-action"><i class="fas fa-share-alt"></i> Share Tip</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Category filter functionality
+        const categoryButtons = document.querySelectorAll('.category-btn');
+        
+        categoryButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                categoryButtons.forEach(btn => btn.classList.remove('active'));
+                
+                // Add active class to clicked button
+                button.classList.add('active');
+                
+                // In a real app, this would filter the tips
+                // For this demo, we'll just show an alert
+                alert(`Filtering by: ${button.textContent}`);
+            });
+        });
+        
+        // Share tip functionality
+        const shareButtons = document.querySelectorAll('.tip-action:nth-child(2)');
+        
+        shareButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                const tipTitle = button.closest('.tip-item').querySelector('.tip-title').textContent;
+                alert(`Sharing tip: ${tipTitle}`);
+            });
+        });
+    </script>
+</body>
+</html>

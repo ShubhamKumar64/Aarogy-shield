@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile - SIH Project</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Navigation Bar */
+        .nav-bar {
+            background: white;
+            border-radius: 15px;
+            padding: 15px 25px;
+            margin-bottom: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .app-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+            font-size: 20px;
+            color: #0c7cba;
+        }
+        
+        .app-brand i {
+            font-size: 24px;
+        }
+        
+        .nav-items {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: #6c757d;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-item i {
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+        
+        .nav-item.active {
+            color: #0c7cba;
+        }
+        
+        .nav-item:hover {
+            color: #0c7cba;
+            transform: translateY(-2px);
+        }
+        
+        
+        header {
+            background: linear-gradient(135deg, #ff6b6b, #ff9e7d);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        header h1 i {
+            margin-right: 15px;
+            font-size: 32px;
+        }
+        
+        header p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        
+        .dashboard {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+        
+        @media (max-width: 900px) {
+            .dashboard {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 25px;
+        }
+        
+        .card-title {
+            font-size: 20px;
+            color: #ff6b6b;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f0f0f0;
+            display: flex;
+            align-items: center;
+        }
+        
+        .card-title i {
+            margin-right: 10px;
+        }
+        
+        .profile-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .profile-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ff6b6b, #ff9e7d);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 32px;
+            font-weight: bold;
+            margin-right: 20px;
+        }
+        
+        .profile-info h2 {
+            font-size: 24px;
+            margin-bottom: 5px;
+            color: #333;
+        }
+        
+        .profile-info p {
+            color: #666;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 15px;
+            border-radius: 8px;
+            background: #f8f9fa;
+        }
+        
+        .stat-value {
+            font-size: 24px;
+            font-weight: 700;
+            color: #ff6b6b;
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        
+        .info-item {
+            margin-bottom: 15px;
+        }
+        
+        .info-label {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+        
+        .info-value {
+            font-size: 16px;
+            font-weight: 500;
+            color: #333;
+        }
+        
+        .divider {
+            height: 1px;
+            background: #e0e0e0;
+            margin: 15px 0;
+        }
+        
+        .health-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .health-section {
+            margin-bottom: 20px;
+        }
+        
+        .health-section h3 {
+            font-size: 18px;
+            color: #ff6b6b;
+            margin-bottom: 10px;
+        }
+        
+        .health-item {
+            margin-bottom: 15px;
+        }
+        
+        .health-label {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+        
+        .health-value {
+            font-size: 16px;
+            font-weight: 500;
+            color: #333;
+        }
+        
+        .team-list {
+            list-style: none;
+        }
+        
+        .team-item {
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            background: #f8f9fa;
+        }
+        
+        .team-name {
+            font-weight: 500;
+            color: #ff6b6b;
+            margin-bottom: 5px;
+        }
+        
+        .team-details {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .data-management {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        
+        .data-text {
+            margin-bottom: 15px;
+            line-height: 1.6;
+            color: #666;
+        }
+        
+        .data-actions {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: #ff6b6b;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background: #ff5252;
+            transform: translateY(-2px);
+        }
+        
+        .btn i {
+            margin-right: 8px;
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #ff6b6b;
+            color: #ff6b6b;
+        }
+        
+        .btn-outline:hover {
+            background: #ff6b6b;
+            color: white;
+        }
+        
+        .blood-type {
+            display: inline-block;
+            padding: 5px 15px;
+            background: #ffeaea;
+            color: #ff6b6b;
+            border-radius: 20px;
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+        
+        .info-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        
+        .info-table td {
+            padding: 10px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .info-table .label {
+            font-weight: 500;
+            color: #666;
+            width: 40%;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Navigation Bar -->
+        <div class="nav-bar">
+            <div class="app-brand">
+                <i class="fas fa-shield-alt"></i>
+                <span>Aarogya Shield</span>
+            </div>
+            <div class="nav-items">
+                <a href="/dashboard" class="nav-item ">
+                    <i class="fas fa-home"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="/nutrition" class="nav-item">
+                    <i class="fas fa-utensils"></i>
+                    <span>Nutrition</span>
+                </a>
+                <a href="/health" class="nav-item">
+                    <i class="fas fa-heartbeat"></i>
+                    <span>Health</span>
+                </a>
+                <a href="/routine" class="nav-item">
+                    <i class="fas fa-calendar-check"></i>
+                    <span>Routine</span>
+                </a>
+                <a href="/tips" class="nav-item">
+                    <i class="fas fa-lightbulb"></i>
+                    <span>Tips</span>
+                </a>
+                <a href="/profile" class="nav-item active">
+                    <i class="fas fa-user-circle"></i>
+                    <span>Profile</span>
+                </a>
+            </div>
+        </div>
+        
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-user-circle"></i> My Profile</h1>
+            <p>Manage your personal information and pregnancy details.</p>
+        </header>
+        
+        <div class="dashboard">
+            <div class="left-column">
+                <div class="card">
+                    <div class="profile-header">
+                        <div class="profile-avatar">SJ</div>
+                        <div class="profile-info">
+                            <h2>Shubham Kumar</h2>
+                            <p>Week 24 of pregnancy</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stats">
+                        <div class="stat-item">
+                            <div class="stat-value">0</div>
+                            <div class="stat-label">Days To Go</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">+10 lbs</div>
+                            <div class="stat-label">Weight Gain</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">24</div>
+                            <div class="stat-label">Weeks Pregnant</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">8</div>
+                            <div class="stat-label">Personal Information</div>
+                        </div>
+                    </div>
+                    
+                    <h3 class="card-title"><i class="fas fa-info-circle"></i> Personal Information</h3>
+                    
+                    <table class="info-table">
+                        <tr>
+                            <td class="label">Full Name</td>
+                            <td class="value">Shubham Kumar</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Age</td>
+                            <td class="value">28</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Blood Type</td>
+                            <td class="value">
+                                <span class="blood-type">O+</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="label">Allergies</td>
+                            <td class="value">None</td>
+                        </tr>
+                    </table>
+                    
+                    <h3 class="card-title"><i class="fas fa-baby"></i> Pregnancy Details</h3>
+                    
+                    <table class="info-table">
+                        <tr>
+                            <td class="label">Due Date</td>
+                            <td class="value">2025-06-15</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Current Week</td>
+                            <td class="value">24</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="right-column">
+                <div class="card">
+                    <h2 class="card-title"><i class="fas fa-heartbeat"></i> Health Information</h2>
+                    
+                    <div class="health-grid">
+                        <div class="health-section">
+                            <h3>Height</h3>
+                            <div class="health-item">
+                                <div class="health-value">5'6"</div>
+                            </div>
+                        </div>
+                        
+                        <div class="health-section">
+                            <h3>Pre-pregnancy Weight</h3>
+                            <div class="health-item">
+                                <div class="health-value">135 lbs</div>
+                            </div>
+                        </div>
+                        
+                        <div class="health-section">
+                            <h3>Current Weight</h3>
+                            <div class="health-item">
+                                <div class="health-value">145 lbs</div>
+                            </div>
+                        </div>
+                        
+                        <div class="health-section">
+                            <h3>Current Medications</h3>
+                            <div class="health-item">
+                                <div class="health-value">Prenatal vitamins</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h2 class="card-title"><i class="fas fa-user-md"></i> Healthcare Team</h2>
+                    
+                    <ul class="team-list">
+                        <li class="team-item">
+                            <div class="team-name">Primary Doctor</div>
+                            <div class="team-details">Dr. Emily Smith</div>
+                        </li>
+                        <li class="team-item">
+                            <div class="team-name">Hospital/Clinic</div>
+                            <div class="team-details">City General Hospital</div>
+                        </li>
+                        <li class="team-item">
+                            <div class="team-name">Emergency Contact</div>
+                            <div class="team-details">John Johnson - (555) 123-4567</div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h2 class="card-title"><i class="fas fa-database"></i> Data Management</h2>
+                    
+                    <div class="data-management">
+                        <p class="data-text">
+                            Your personal information is stored locally on your device and is not shared. 
+                            You can export or delete your data at any time.
+                        </p>
+                        
+                        <div class="data-actions">
+                            <button class="btn"><i class="fas fa-download"></i> Export Profile Data</button>
+                            <button class="btn btn-outline"><i class="fas fa-trash"></i> Delete All Data</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Calculate days to go until due date
+        function calculateDaysToGo() {
+            const dueDate = new Date('2025-06-15');
+            const today = new Date();
+            const diffTime = dueDate - today;
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+            
+            document.querySelector('.stat-value:first-child').textContent = diffDays;
+        }
+        
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            calculateDaysToGo();
+            
+            // Add event listeners for buttons
+            document.querySelector('.btn:last-child').addEventListener('click', function() {
+                if(confirm('Are you sure you want to delete all your data? This action cannot be undone.')) {
+                    alert('All data has been deleted.');
+                }
+            });
+            
+            document.querySelector('.btn:first-child').addEventListener('click', function() {
+                alert('Your data export has started. You will receive a notification when it is ready.');
+            });
+        });
+    </script>
+</body>
+</html>
