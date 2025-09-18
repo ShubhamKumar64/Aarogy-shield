@@ -3,11 +3,8 @@ const path = require('path');
 
 const localesPath = path.join(__dirname, '../frontend/locales');
 
-// Available languages
-const availableLanguages = ['en', 'hi'];
-
 const languageMiddleware = (req, res, next) => {
-    // Default language
+    // Default language English
     let lang = 'en';
     
     // Check session for language preference
@@ -15,8 +12,8 @@ const languageMiddleware = (req, res, next) => {
         lang = req.session.language;
     }
     
-    // Check query parameter for language change
-    if (req.query.lang && availableLanguages.includes(req.query.lang)) {
+    // Check URL parameter for language change
+    if (req.query.lang && (req.query.lang === 'en' || req.query.lang === 'hi')) {
         lang = req.query.lang;
         if (req.session) {
             req.session.language = lang;
@@ -25,11 +22,16 @@ const languageMiddleware = (req, res, next) => {
     
     // Load language file
     try {
-        const languageData = JSON.parse(fs.readFileSync(path.join(localesPath, `${lang}.json`), 'utf8'));
-        req.language = lang;
-        req.t = (key) => languageData[key] || key;
+        const filePath = path.join(localesPath, `${lang}.json`);
+        if (fs.existsSync(filePath)) {
+            const languageData = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+            req.language = lang;
+            req.t = (key) => languageData[key] || key;
+        } else {
+            req.t = (key) => key;
+        }
     } catch (error) {
-        console.error('Error loading language file:', error);
+        console.log('Language file error:', error);
         req.t = (key) => key;
     }
     

@@ -1,26 +1,31 @@
-<nav class="nav-bar">
-    <div class="app-brand">
+<!-- <div class="nav-bar"> -->
+    <!-- Existing brand logo -->
+    <!-- <div class="app-brand">
         <i class="fas fa-shield-alt"></i>
-        <span>Aarogya Shield</span>  <!-- Pehle jaise -->
-    </div>
+        <span><%= t('appName') %></span>  <!-- ✅ CHANGED -->
+    <!-- </div> --> -->
     
-    <div class="nav-items">
-        <!-- Existing menu items -->
-        <a href="/dashboard" class="nav-item">
+    <!-- Existing menu items -->
+    <!-- <div class="nav-items">
+        <a href="/dashboard" class="nav-item <%= currentPage === 'dashboard' ? 'active' : '' %>">
             <i class="fas fa-home"></i>
-            <span>Dashboard</span>  <!-- Pehle jaise -->
-        </a>
-        <!-- ... other menu items -->
-    </div>
+            <span><%= t('dashboard') %></span>  <!-- ✅ CHANGED -->
+        <!-- </a>
+        <a href="/nutrition" class="nav-item <%= currentPage === 'nutrition' ? 'active' : '' %>">
+            <i class="fas fa-utensils"></i>
+            <span><%= t('nutrition') %></span>  <!-- ✅ CHANGED -->
+        <!-- </a>  -->
+        <!-- ... other menu items with t() -->
+    <!-- </div> -->
 
-    <!-- ✅ YE NEW CODE ADD KARO - Simple Language Switcher -->
-    <div class="language-switcher">
+    <!-- ✅ ADD LANGUAGE SWITCHER -->
+    <!-- <div class="language-switcher">
         <select onchange="changeLanguage(this.value)" class="language-select">
-            <option value="en">English</option>
-            <option value="hi">Hindi</option>
+            <option value="en" <%= currentLanguage === 'en' ? 'selected' : '' %>>English</option>
+            <option value="hi" <%= currentLanguage === 'hi' ? 'selected' : '' %>>Hindi</option>
         </select>
     </div>
-</nav>
+</div>
 
 <style>
 .language-switcher {
@@ -34,12 +39,29 @@
     background: white;
     color: #0c7cba;
     cursor: pointer;
+    font-weight: 500;
 }
-</style>
+</style> -->
 
-<script>
+<!-- <script>
 function changeLanguage(lang) {
-    // Simple language change
-    window.location.href = window.location.pathname + '?lang=' + lang;
+    const currentUrl = new URL(window.location.href);
+    currentUrl.searchParams.set('lang', lang);
+    window.location.href = currentUrl.toString();
 }
-</script>
+</script> -->
+
+
+<nav style="background: white; padding: 15px; display: flex; justify-content: space-between;">
+    <div>
+        <span>Logo</span>
+    </div>
+    
+    <div>
+        <a href="/dashboard?lang=en">English</a> | 
+        <a href="/dashboard?lang=hi">Hindi</a>
+    </div>
+</nav>
+
+<h1>TEST: <%= t('welcome') %></h1>
+<p>Current Language: <%= currentLanguage %></p>
